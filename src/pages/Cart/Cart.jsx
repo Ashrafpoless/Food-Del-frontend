@@ -26,20 +26,20 @@ const Cart = () => {
           <p>Remove</p>
         </div>
         <br />
-         <hr /> 
-         {food_list.map((item, index)=> {
+        <hr /> 
+        {food_list.map((item, index)=> {
             if(cartItems[item._id]>0){
               return(
                 <div key={index}>
-                <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="" />
-                  <p>{item.name}</p>
-                  <p>${item.price}</p>
-                  <p>{cartItems[item._id]}</p>
-                  <p>${item.price * cartItems[item._id]}</p>
-                  <p className='cross' onClick={()=> removeFromCart(item._id)}>X</p>
-                </div>
-                <hr />
+                  <div className="cart-items-title cart-items-item">
+                    <img src={import.meta.env.VITE_SERVER_URL+"/images/"+item.image} alt="" />
+                    <p>{item.name}</p>
+                    <p>${item.price}</p>
+                    <p>{cartItems[item._id]}</p>
+                    <p>${item.price * cartItems[item._id]}</p>
+                    <p className='cross' onClick={()=> removeFromCart(item._id)}>X</p>
+                  </div>
+                  <hr />
                 </div>
               )
             }
