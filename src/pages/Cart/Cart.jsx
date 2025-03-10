@@ -1,21 +1,21 @@
 // react
-import { useContext } from 'react'
+import { useContext } from 'react';
 
 //react router dom
 import { useNavigate } from 'react-router-dom';
 
 // context
-import { StoreContext } from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext';
 
 // component
-import  './Cart.css'
+import './Cart.css';
 
 const Cart = () => {
-
-    const {cartItems, food_list, removeFromCart, getTotalCartAmount} = useContext(StoreContext);
-    const navigate = useNavigate()
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
+  const navigate = useNavigate();
   return (
-    <div className='cart'>
+    <div className="cart">
       <div className="cart-items">
         <div className="cart-items-title">
           <p>Items</p>
@@ -26,24 +26,31 @@ const Cart = () => {
           <p>Remove</p>
         </div>
         <br />
-        <hr /> 
-        {food_list.map((item, index)=> {
-            if(cartItems[item._id]>0){
-              return(
-                <div key={index}>
-                  <div className="cart-items-title cart-items-item">
-                    <img src={import.meta.env.VITE_SERVER_URL+"/images/"+item.image} alt="" />
-                    <p>{item.name}</p>
-                    <p>${item.price}</p>
-                    <p>{cartItems[item._id]}</p>
-                    <p>${item.price * cartItems[item._id]}</p>
-                    <p className='cross' onClick={()=> removeFromCart(item._id)}>X</p>
-                  </div>
-                  <hr />
+        <hr />
+        {food_list.map((item, index) => {
+          if (cartItems[item._id] > 0) {
+            return (
+              <div key={index}>
+                <div className="cart-items-title cart-items-item">
+                  <img
+                    src={
+                      import.meta.env.VITE_SERVER_URL + '/images/' + item.image
+                    }
+                    alt=""
+                  />
+                  <p>{item.name}</p>
+                  <p>${item.price}</p>
+                  <p>{cartItems[item._id]}</p>
+                  <p>${item.price * cartItems[item._id]}</p>
+                  <p className="cross" onClick={() => removeFromCart(item._id)}>
+                    X
+                  </p>
                 </div>
-              )
-            }
-         })}
+                <hr />
+              </div>
+            );
+          }
+        })}
       </div>
       <div className="cart-bottom">
         <div className="cart-total">
@@ -61,10 +68,14 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() === 0 ? 0 :getTotalCartAmount()+2}</b>
+              <b>
+                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+              </b>
             </div>
           </div>
-            <button onClick={()=> navigate('/order')}>Proceed To Checkout</button>
+          <button onClick={() => navigate('/order')}>
+            Proceed To Checkout
+          </button>
         </div>
         <div className="cart-promocode">
           <div>
@@ -77,7 +88,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
