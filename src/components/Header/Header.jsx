@@ -1,5 +1,5 @@
 // component
-import './Header.CSS';
+import './Header.css';
 
 const Header = () => {
   return (
