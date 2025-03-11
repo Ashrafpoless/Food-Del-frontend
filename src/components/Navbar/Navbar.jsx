@@ -12,7 +12,7 @@ import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 
 // component
-import './navbar.css';
+import './Navbar.css';
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState('home');
