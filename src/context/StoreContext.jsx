@@ -16,7 +16,7 @@ const StoreContextProvider = (props) => {
     }
     if (token) {
       await axios.post(
-        import.meta.env.VITE_SERVER_URL + 'api/cart/add',
+        import.meta.env.VITE_SERVER_URL + '/api/cart/add',
         { itemId },
         { headers: { token } }
       );
@@ -27,7 +27,7 @@ const StoreContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
       await axios.post(
-        import.meta.env.VITE_SERVER_URL + 'api/cart/remove',
+        import.meta.env.VITE_SERVER_URL + '/api/cart/remove',
         { itemId },
         { headers: { token } }
       );
@@ -47,7 +47,7 @@ const StoreContextProvider = (props) => {
   const fetchFoodList = async () => {
     try {
       const res = await axios.get(
-        import.meta.env.VITE_SERVER_URL + 'api/food/list'
+        import.meta.env.VITE_SERVER_URL + '/api/food/list'
       );
       setFoodList(res.data.data);
     } catch (error) {
@@ -58,7 +58,7 @@ const StoreContextProvider = (props) => {
   const loadCartData = async (token) => {
     try {
       const res = await axios.post(
-        import.meta.env.VITE_SERVER_URL + 'api/cart/get',
+        import.meta.env.VITE_SERVER_URL + '/api/cart/get',
         {},
         { headers: { token } }
       );
